@@ -19,15 +19,15 @@ while True:
         computer_number = random.randint(1, 3)
 
         if user_command == "1":
-            tries = 10
+            tries = 15
             difficulty = "Easy"
             print(f"You have selected the {difficulty} difficulty!\nYou have {tries} chances to guess the number!")
         elif user_command == "2":
-            tries = 8
+            tries = 12
             difficulty = "Medium"
             print(f"You have selected the {difficulty} difficulty!\nYou have {tries} chances to guess the number!")
         elif user_command == "3":
-            tries = 5
+            tries = 10
             difficulty = "Hard"
             print(f"You have selected the {difficulty} difficulty!\nYou have {tries} chances to guess the number!")
         elif user_command == "exit":
@@ -40,11 +40,11 @@ while True:
         new_game = False
 
         if user_command == "2" or user_command == "exit":
-            print(f"Sorry to see you leave! Bye!\nSTATS\nGAMES:{games}\nWINS:{wins}\nLOSSES:{losses}")
+            print(f"Sorry to see you leave! Bye!\nSTATS\nGAMES:{games}\nWINS:{wins}\nLOSSES:{losses}POINTS:{points}")
             break
         else:
             computer_number = random.randint(1, 100)
-            tries = 6
+            tries = 0
             difficulty = ""
             new_game = True
             continue
@@ -68,12 +68,19 @@ while True:
             continue
         else:
             wins += 1
+            if tries < 3:
+                points += 5
+            elif tries < 5:
+                points += 10
+            else:
+                points += 20
+
             print(f"You guessed the number in {tries} tries! CONGRATULATIONS!\nSTATS\n"
-                  f"GAMES:{games}\nWINS:{wins}\nLOSSES:{losses}")
+                  f"GAMES:{games}\nWINS:{wins}\nLOSSES:{losses}\nPOINTS:{points}")
             user_command = input(another_game)
             if user_command == "2":
                 new_game = False
-                print(f"Sorry to see you leave! Bye!\nSTATS\nGAMES:{games}\nWINS:{wins}\nLOSSES:{losses}")
+                print(f"Sorry to see you leave! Bye!\nSTATS\nGAMES:{games}\nWINS:{wins}\nLOSSES:{losses}POINTS:{points}")
                 break
             elif user_command == "1":
                 new_game = True
