@@ -1,6 +1,5 @@
 import random
 
-computer_number = random.randint(1, 100)
 tries = 0
 difficulty = ""
 points = 0
@@ -12,14 +11,12 @@ another_game = "Do you want to play another game?\n 1. Yes \n 2. No "
 select_level = "Please, select a level:\n 1. Easy\n 2. Medium\n 3. Hard\n "
 
 
-
-
 while True:
-
 
     if new_game:
         user_command = input(select_level)
         games += 1
+        computer_number = random.randint(1, 3)
 
         if user_command == "1":
             tries = 10
@@ -71,7 +68,8 @@ while True:
             continue
         else:
             wins += 1
-            print(f"You guessed the number in {tries} tries! CONGRATULATIONS!\nSTATS\nGAMES:{games}\nWINS:{wins}\nLOSSES:{losses}")
+            print(f"You guessed the number in {tries} tries! CONGRATULATIONS!\nSTATS\n"
+                  f"GAMES:{games}\nWINS:{wins}\nLOSSES:{losses}")
             user_command = input(another_game)
             if user_command == "2":
                 new_game = False
